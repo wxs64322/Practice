@@ -1,0 +1,28 @@
+# -*- coding: utf-8 -*-
+"""
+Created on Tue May 28 21:46:37 2019
+
+@author: wxs
+"""
+
+import re,os
+#获取当前目录的绝对路径
+filedir = os.getcwd()
+#列出当前目录下所有文件名
+filenames_all = os.listdir(filedir)
+#列表：保存所有txt文件名
+filenames_txt = []
+#列表：保存所有行
+Lines = []
+#正则表达式匹配内容
+Regex = re.compile(r'panda')
+
+#给出所有txt文件名的列表
+for i in range(len(filenames_all)):
+    if filenames_all[i].endswith('.txt'):
+        filenames_txt.append(filenames_all[i])
+#将所有txt文件中的行合并为一个列表
+for filename in filenames_txt:
+    filepath = filedir+'\\'+filename
+    Contents = open(filepath,'r')
+    Lines.append(Contents.readlines())
