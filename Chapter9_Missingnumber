@@ -1,0 +1,32 @@
+# -*- coding: utf-8 -*-
+"""
+Created on Wed Jun 19 21:25:28 2019
+
+@author: wxs
+"""
+
+import os
+#To do:list all files in a folder starting with spam
+def Missing_Number(folder,kw,kind):
+    folder = os.path.abspath(folder)
+    i = 0
+    for foldername, subfolders, filenames in os.walk(folder):
+        for filename in filenames:
+            if filename.startswith(kw) and filename.endswith('.'+kind):
+                a = filename.strip(kw)
+                b = a.strip('.'+kind)
+                i += 1
+                if i != int(b):
+                    NewName = kw + str(i).rjust(3, '0') + '.' + kind
+                    os.rename(os.path.join(foldername, filename),os.path.join(foldername, NewName))               
+                #To do:Build a list with number of files
+
+#                FileList.sort()
+    #Check if any number missing and find out
+
+        
+
+
+#Renumber files afterwards
+
+Missing_Number('.\\MissingNumber','spam','txt')
