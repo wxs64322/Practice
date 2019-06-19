@@ -1,0 +1,19 @@
+# -*- coding: utf-8 -*-
+"""
+Created on Wed Jun 19 16:26:47 2019
+
+@author: Administrator
+"""
+
+import os
+def DeleteBigFile(folder):
+    folder = os.path.abspath(folder)
+    for foldername, subfolders, filenames in os.walk(folder):
+        for filename in filenames:
+            dir = os.path.join(foldername,filename)
+            size = os.path.getsize(dir)
+            if size >= 1e7:
+                print(os.path.abspath(dir))
+                os.unlink(dir)
+                
+DeleteBigFile('.\\')
